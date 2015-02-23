@@ -41,10 +41,16 @@ class FizzBuzzTest(_system: ActorSystem) extends TestKit(_system) with ImplicitS
       checkMessage(20, "Buzz")
     }
 
-    "return the received number if it isn't multiple of three or five" in {
+    "return the received number if it isn't multiple of 3 or 5" in {
       checkMessage(1, 1)
       checkMessage(11, 11)
       checkMessage(47, 47)
+    }
+    
+    "return FizzBuzz Message for multiples of 3 and 5" in {
+      checkMessage(15, "FizzBuzz")
+      checkMessage(30, "FizzBuzz")
+      checkMessage(45, "FizzBuzz")
     }
   }
 

@@ -9,6 +9,7 @@ class FizzBuzz extends Actor {
       (number % 3 == 0, number %5 == 0) match{
         case (true, false) => sender ! "Fizz"
         case (false, true) => sender ! "Buzz"
+        case (true, true) => sender ! "FizzBuzz"
         case _=> sender ! number
       }
   }
