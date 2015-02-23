@@ -30,6 +30,16 @@ class FizzBuzzTest(_system: ActorSystem) extends TestKit(_system) with ImplicitS
     "return Buzz message for the number five" in {
       checkMessage(5, "Buzz")
     }
+    
+    "return Fizz Message for multiples of the number 3" in {
+      checkMessage(6, "Fizz")
+      checkMessage(9, "Fizz")
+    }
+    
+    "return Buzz Message for multiples of the number 5" in {
+      checkMessage(10, "Buzz")
+      checkMessage(20, "Buzz")
+    }
   }
 
   def checkMessage(number: Int, message: String) {

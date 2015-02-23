@@ -6,8 +6,8 @@ class FizzBuzz extends Actor {
 
   def receive = {
     case number : Int =>
-      number match{
-        case 3 => sender ! "Fizz"
+      (number % 3 == 0) match{
+        case true => sender ! "Fizz"
         case _ => sender ! "Buzz"
       }
   }
