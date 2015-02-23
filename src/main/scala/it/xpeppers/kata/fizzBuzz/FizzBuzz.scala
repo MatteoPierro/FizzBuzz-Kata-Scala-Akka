@@ -5,6 +5,10 @@ import akka.actor.Actor
 class FizzBuzz extends Actor {
 
   def receive = {
-    case _ => sender ! "Fizz"
+    case number : Int =>
+      number match{
+        case 3 => sender ! "Fizz"
+        case _ => sender ! "Buzz"
+      }
   }
 }
