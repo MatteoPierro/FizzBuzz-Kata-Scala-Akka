@@ -30,19 +30,25 @@ class FizzBuzzTest(_system: ActorSystem) extends TestKit(_system) with ImplicitS
     "return Buzz message for the number five" in {
       checkMessage(5, "Buzz")
     }
-    
+
     "return Fizz Message for multiples of the number 3" in {
       checkMessage(6, "Fizz")
       checkMessage(9, "Fizz")
     }
-    
+
     "return Buzz Message for multiples of the number 5" in {
       checkMessage(10, "Buzz")
       checkMessage(20, "Buzz")
     }
+
+    "return the received number if it isn't multiple of three or five" in {
+      checkMessage(1, 1)
+      checkMessage(11, 11)
+      checkMessage(47, 47)
+    }
   }
 
-  def checkMessage(number: Int, message: String) {
+  def checkMessage(number: Int, message: Any) {
     val fizzBuzz = system.actorOf(Props[FizzBuzz])
     fizzBuzz ! number
     expectMsg(message)
