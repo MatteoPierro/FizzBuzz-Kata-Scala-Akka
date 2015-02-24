@@ -40,8 +40,13 @@ class FizzBuzzTest(_system: ActorSystem) extends TestKit(_system) with ImplicitS
       checkMessage(10, "Buzz")
       checkMessage(20, "Buzz")
     }
+    
+    "return Bang Message for multiples of the number 7" in {
+      checkMessage(7, "Bang")
+      checkMessage(14, "Bang")
+    }
 
-    "return the received number if it isn't multiple of 3 or 5" in {
+    "return the received number if it isn't multiple of 3, 5 or 7" in {
       checkMessage(1, 1)
       checkMessage(11, 11)
       checkMessage(47, 47)
@@ -51,6 +56,22 @@ class FizzBuzzTest(_system: ActorSystem) extends TestKit(_system) with ImplicitS
       checkMessage(15, "FizzBuzz")
       checkMessage(30, "FizzBuzz")
       checkMessage(45, "FizzBuzz")
+    }
+    
+    "return FizzBang Message for multiples of 3 and 7" in {
+      checkMessage(21, "FizzBang")
+      checkMessage(42, "FizzBang")
+      checkMessage(63, "FizzBang")
+    }
+    
+    "return BuzzBang Message for multiples of 5 and 7" in {
+      checkMessage(35, "BuzzBang")
+      checkMessage(70, "BuzzBang")
+    }
+    
+    "return FizzBuzzBang Message for multiples of 3, 5 and 7" in {
+      checkMessage(105, "FizzBuzzBang")
+      checkMessage(210, "FizzBuzzBang")
     }
   }
 
